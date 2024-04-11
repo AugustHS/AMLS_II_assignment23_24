@@ -151,3 +151,12 @@ with torch.no_grad():
 avg_psnr = sum(psnr_values) / len(psnr_values)
 avg_ssim = sum(ssim_values) / len(ssim_values)
 print(f"Average PSNR: {avg_psnr}, Average SSIM: {avg_ssim}")
+
+# plot the training graph
+plt.plot(range(1, num_epochs + 1), train_losses, label='Training Loss')
+plt.plot(range(1, num_epochs + 1), val_losses, label='Validation Loss')
+plt.xlabel('Epoch')
+plt.ylabel('MSE Loss')
+plt.title('Training and Validation Loss')
+plt.legend()
+plt.savefig('training_validation_loss_B.png') 
