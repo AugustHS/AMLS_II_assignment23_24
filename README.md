@@ -6,7 +6,9 @@ Besides, There are complete code for training and evaluating the models in folde
 
 # 2. The role of each file
 
-"main.py" is used to show the performance of Model A and Model B for Task A(X2) and Task B(X2) respectively. "model.py", "Model_A_X2_state_dict.pth", "Model_B_X2_state_dict.pth", "DIV2K_valid_HR","DIV2K_valid_LR_bicubic_X2/X2", "DIV2K_valid_LR_unknown_X2/X2" are necessary for running "main.py".
+"main.py" is used to show the performance of Model A and Model B for Task A(X2) and Task B(X2) respectively. 
+
+The necessary files for running "main.py" are: "model.py", "Model_A_X2_state_dict.pth", "Model_B_X2_state_dict.pth", "DIV2K_valid_HR","DIV2K_valid_LR_bicubic_X2/X2", "DIV2K_valid_LR_unknown_X2/X2"
    
 "model.py" contains the structure of Model A and Model B
 
