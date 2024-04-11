@@ -4,9 +4,13 @@
 
 2. The role of each file 
 
-  "main.py" is used to show the performance of Model A and Model B for Task A(X2) and Task B(X2) respectively
+  "main.py" is used to show the performance of Model A and Model B for Task A(X2) and Task B(X2) respectively. "model.py", "Model_A_X2_state_dict.pth", "Model_B_X2_state_dict.pth", "DIV2K_valid_HR","DIV2K_valid_LR_bicubic_X2/X2", "DIV2K_valid_LR_unknown_X2/X2" are necessary for running "main.py"
 
   "model.py" contains the structure of Model A and Model B
+
+  "Model_A_X2_state_dict.pth" contains the Model A after training 
+
+  "Model_B_X2_state_dict.pth" contains the Model B after training 
 
   "DIV2K_valid_HR"contains the HR images for model testing in main.py
 
@@ -14,9 +18,9 @@
 
   "DIV2K_valid_LR_unknown_X2/X2" contains the LR images for testing Model B in main.py
 
-  "A" contains the code for training and evaluating the Model A, change the path of dataset and the value of scale_factor can make the Model trained for different sub-tasks(X2,X3,X4).
+  "A" contains the code for training and evaluating the Model A, change the path of dataset and the value of scale_factor can make the Model trained for different sub-tasks(X2,X3,X4). The well trained Model A for Task A(X3,X4) is also included in this folder.
 
-  "B" contains the code for training and evaluating the Model B, change the path of dataset and the value of scale_factor can make the Model trained for different sub-tasks(X2,X3,X4).
+  "B" contains the code for training and evaluating the Model B, change the path of dataset and the value of scale_factor can make the Model trained for different sub-tasks(X2,X3,X4). The well trained Model B for Task B(X3,X4) is also included in this folder.
 
 3. the packages required to run the code
 
