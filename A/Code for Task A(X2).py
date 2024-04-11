@@ -10,6 +10,7 @@ import os
 import glob
 import matplotlib.pyplot as plt
 import numpy as np
+from piq import psnr,ssim
 
 # load and preprocess the data
 class DIV2KDataset(Dataset):
@@ -64,7 +65,7 @@ val_dataset = DIV2KDataset(lr_path=VAL_LR_PATH, hr_path=VAL_HR_PATH)
 train_loader = DataLoader(train_dataset, batch_size=64, shuffle=True)
 val_loader = DataLoader(val_dataset, batch_size=64, shuffle=True)
 
-# construct the model
+# construct the model A
 class Model(nn.Module): 
     def __init__(self):
         super(Model, self).__init__()
@@ -79,7 +80,7 @@ class Model(nn.Module):
         x = self.conv3(x)
         return x
 
-#    
+# use GPU for training   
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 model = Model().to(device)
 criterion = nn.MSELoss()
@@ -89,6 +90,7 @@ num_epochs = 30
 train_losses = []
 val_losses = []
 
+# train the model
 for epoch in range(num_epochs):
     model.train()
     running_train_loss = 0.0
@@ -124,6 +126,7 @@ for epoch in range(num_epochs):
     
     print(f"Epoch {epoch+1}, Training Loss: {epoch_train_loss}, Validation Loss: {epoch_val_loss}")
 
+# calculate PSNR and SSIM
 psnr_values = []
 ssim_values = []
 
@@ -146,3 +149,12 @@ with torch.no_grad():
 avg_psnr = sum(psnr_values) / len(psnr_values)
 avg_ssim = sum(ssim_values) / len(ssim_values)
 print(f"Average PSNR: {avg_psnr}, Average SSIM: {avg_ssim}")
+
+# plot the training graph
+plt.plot(range(1, num_epochs + 1), train_losses, label='Training Loss')
+plt.plot(range(1, num_epochs + 1), val_losses, label='Validation Loss')
+plt.xlabel('Epoch')
+plt.ylabel('MSE Loss')
+plt.title('Training and Validation Loss')
+plt.legend()
+plt.savefig('training_validation_loss_A.png') 
